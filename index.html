@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluasi Nilai Anda</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        h3{
+            text-align: left;
+            margin-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aplikasi Perhitungan Nilai</h1>
+    <h3>Masukkan Nilai Anda</h3>
+    <label for="presensi">Presensi:</label>
+    <input type="text" id="presensi" value="85">
+
+    <label for="tugas">Nilai Tugas:</label>
+    <input type="text" id="tugas" value="90">
+
+    <label for="uts">Nilai UTS:</label>
+    <input type="text" id="uts" value="75">
+
+    <label for="uas">Nilai UAS:</label>
+    <input type="text" id="uas" value="85">
+
+    <button onclick="hitungNilai()">Hitung</button>
+    <button onclick="resetForm()">Cancel</button>
+
+    <div id="result"></div>
+
+    <script>
+        function hitungNilai() {
+        const presensi = parseFloat(document.getElementById('presensi').value);
+        const tugas = parseFloat(document.getElementById('tugas').value);
+        const uts = parseFloat(document.getElementById('uts').value);
+        const uas = parseFloat(document.getElementById('uas').value);
+
+        // Menghitung nilai akhir
+        const nilaiAkhir = (presensi * 0.1) + (tugas * 0.2) + (uts * 0.3) + (uas * 0.4);
+
+        // Menentukan huruf
+        let huruf;
+        if (nilaiAkhir > 80) {
+            huruf = 'A';
+        } else if (nilaiAkhir > 75) {
+            huruf = 'B+';
+        } else if (nilaiAkhir > 70) {
+            huruf = 'B';
+        } else if (nilaiAkhir > 65) {
+            huruf = 'B-';
+        } else if (nilaiAkhir > 60) {
+            huruf = 'C+';
+        } else if (nilaiAkhir > 55) {
+            huruf = 'C';
+        } else if (nilaiAkhir > 50) {
+            huruf = 'C-';
+        } else if (nilaiAkhir > 30) {
+            huruf = 'D';
+        } else {
+            huruf = 'E';
+        }
+
+        // Menampilkan hasil
+        document.getElementById('result').innerText = `Nilai Akhir: ${nilaiAkhir.toFixed(2)} - Huruf: ${huruf}`;
+    }
+</script>
+
+</body>
+</html>
